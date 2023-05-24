@@ -1,0 +1,27 @@
+{
+    "name": "sashagm/notification",
+    "description": "description",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sashagm",
+            "email": "example@gmail.com",
+            "homepage": "https://github.com/sashagm"
+        }    
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "laravel-notification-channels/telegram": "^4.0",
+        "irazasyed/telegram-bot-sdk": "^3.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sashagm\\Notification\\": "src",
+            "Sashagm\\Notification\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.1"
+    }
+}
