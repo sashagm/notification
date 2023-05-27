@@ -28,6 +28,12 @@ class TestNotificationCommand extends Command
                 $notificationService->sendTelegram($message);
                 $this->info('Console - Test Telegram notification sent!');
                 break;
+            case 'all':
+                $notificationService->sendEmail($message);
+                $notificationService->sendTelegram($message);
+                $this->info('Console - Test All notification sent!');
+                break;
+
             default:
                 $this->error('Invalid notification type.');
         }

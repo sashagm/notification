@@ -23,7 +23,13 @@ class NotificationController extends Controller
             $this->notificationService->sendEmail($message);
         } else if ($type == 'telegram') {
             $this->notificationService->sendTelegram($message);
-        } else {
+        } else if ($type == 'vk') {
+            $this->notificationService->sendVk($message);
+        } else if ($type == 'all') {
+            $this->notificationService->sendAll($message);
+        } 
+        
+        else {
             return response()->json(['error' => 'Invalid notification type'], 400);
         }
 

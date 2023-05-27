@@ -3,6 +3,7 @@
 namespace Sashagm\Notification\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Sashagm\Themes\Console\Commands\CreateCommand;
 use Sashagm\Notification\Console\Commands\TestNotificationCommand;
 
 class NotificationServiceProvider extends ServiceProvider
@@ -28,6 +29,7 @@ class NotificationServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
+                CreateCommand::class,
                 TestNotificationCommand::class,
  
             ]);

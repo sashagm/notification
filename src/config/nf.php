@@ -7,5 +7,7 @@ return [
     'telegramApiKey' =>  env('TELEGRAM_API_KEY'),
     'chatId' => env('TELEGRAM_CHAT_ID'),
     'email' => env('NF_EMAIL'),
+    'vkToken' => env('VK_TOKEN'),
+    'vkUserId' => env('VK_USER_ID'),
 
 ];

@@ -2,8 +2,10 @@
 
 namespace Sashagm\Notification\Services;
 
-use Illuminate\Support\Facades\Mail;
+use Exception;
 use GuzzleHttp\Client;
+use VK\Client\VKApiClient;
+use Illuminate\Support\Facades\Mail;
 
 class NotificationService
 {
@@ -36,4 +38,25 @@ class NotificationService
             throw new \Exception('Failed to send Telegram message');
         }
     }
+
+
+    public function sendVk($message)
+    {
+        
+        
+        
+    }
+    
+
+
+    public function sendAll($message)
+    {
+
+        $this->sendEmail($message);
+        $this->sendTelegram($message);
+
+    }
+
+
+
 }

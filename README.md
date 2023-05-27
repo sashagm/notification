@@ -63,7 +63,17 @@ TELEGRAM_CHAT_ID =
     "message": "Hello, world!"
 }
 ```
-3. Вы можете отправлять уведомления из любого места в вашем приложении, не только из контроллера. Для этого вам нужно создать экземпляр `NotificationService` и вызвать методы `sendEmail` или `sendTelegram`, как мы это делали в команде Artisan.
+3.  Чтобы отправить уведомление на все каналы, отправьте POST запрос на `route('nf')` со следующими параметрами:
+
+
+```php
+{
+    "type": "all", // для отправки в все каналы
+    "message": "Hello, world!"
+}
+```
+
+4. Вы можете отправлять уведомления из любого места в вашем приложении, не только из контроллера. Для этого вам нужно создать экземпляр `NotificationService` и вызвать методы `sendEmail`, `sendTelegram` или `sendAll`, как мы это делали в команде Artisan.
 
 Например, вы можете отправить уведомление на электронную почту в следующем коде:
 
@@ -85,6 +95,18 @@ $message = 'This is a test Telegram notification.';
 $notificationService->sendTelegram($message);
 ```
 
+Так же можно отправить во все канылы:
+
+```php
+use Sashagm\Notification\Services\NotificationService;
+
+$notificationService = new NotificationService();
+$message = 'This is a test all chanel notification.';
+$notificationService->sendAll($message);
+
+```
+
+
 Просто убедитесь, что вы импортировали класс `NotificationService` в ваш файл.
 
 
@@ -93,8 +115,9 @@ $notificationService->sendTelegram($message);
 
 Наш пакет предоставляет ряд дополнительных возможностей, которые могут быть полезны при работе с уведомлениями:
 
-- `php artisan notification:test {type}` - Данная команда отправит тестовое уведомление на выбранный канал (email,telegram).
+- `php artisan notification:test {type}` - Данная команда отправит тестовое уведомление на выбранный канал (email,telegram,all).
 
+- `php artisan notification:send {type} {message}` - Данная команда отправит тестовое уведомление на выбранный канал с вашем сообщением (email,telegram, all).
 
 #### Тестирование
 
