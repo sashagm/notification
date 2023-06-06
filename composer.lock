@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bfa09bdf4e198feaba5d266945ca295",
+    "content-hash": "b414723cee7a3013a29ee448415f00ad",
     "packages": [
         {
             "name": "brick/math",
@@ -4757,46 +4757,6 @@
                 "twilio"
             ],
             "time": "2023-05-18T07:58:57+00:00"
-        },
-        {
-            "name": "vkcom/vk-php-sdk",
-            "version": "5.131.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/VKCOM/vk-php-sdk.git",
-                "reference": "3e12d4b3d18d1079673103b6f0cd05a99c8e9b2b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/VKCOM/vk-php-sdk/zipball/3e12d4b3d18d1079673103b6f0cd05a99c8e9b2b",
-                "reference": "3e12d4b3d18d1079673103b6f0cd05a99c8e9b2b",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^7.5",
-                "php": "^8.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "VK\\": "src/VK"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "VK PHP SDK",
-            "homepage": "https://github.com/VKCOM/vk-php-sdk",
-            "keywords": [
-                "sdk",
-                "vk"
-            ],
-            "support": {
-                "issues": "https://github.com/VKCOM/vk-php-sdk/issues",
-                "source": "https://github.com/VKCOM/vk-php-sdk/tree/5.131.0"
-            },
-            "time": "2023-05-15T20:30:42+00:00"
         },
         {
             "name": "voku/portable-ascii",

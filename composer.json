@@ -1,6 +1,6 @@
 {
     "name": "sashagm/notification",
-    "description": "description",
+    "description": "NotificationService - это компонент фреймворка Laravel, который позволяет уведомлять пользователей о различных событиях в приложении. Он предоставляет возможность отправки уведомлений на электронную почту или в Telegram-чаты.",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
@@ -14,7 +14,6 @@
         "php": "^7.3|^8.0",
         "laravel-notification-channels/telegram": "^4.0",
         "irazasyed/telegram-bot-sdk": "^3.12",
-        "vkcom/vk-php-sdk": "^5.131",
         "twilio/sdk": "^7.4"
     },
     "autoload": {
