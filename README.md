@@ -117,7 +117,7 @@ $notificationService->sendAll($message);
 
 - `php artisan notification:test {type}` - Данная команда отправит тестовое уведомление на выбранный канал (email,telegram,all).
 
-- `php artisan notification:send {type} {message}` - Данная команда отправит тестовое уведомление на выбранный канал с вашем сообщением (email,telegram, all).
+- `php artisan notification:send {type} {message}  {--id=0}` - Данная команда отправит тестовое уведомление на выбранный канал с вашем сообщением (email,telegram, all). Для указания id можно отправить только либо на `email` своим адресом либо в `telegram` на свой ид чат.
 
 #### Тестирование
 

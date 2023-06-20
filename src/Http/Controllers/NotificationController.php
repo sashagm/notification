@@ -18,11 +18,12 @@ class NotificationController extends Controller
     {
         $type = $request->input('type');
         $message = $request->input('message');
+        $id = $request->input('id');
 
         if ($type == 'email') {
-            $this->notificationService->sendEmail($message);
+            $this->notificationService->sendEmail($message, $id);
         } else if ($type == 'telegram') {
-            $this->notificationService->sendTelegram($message);
+            $this->notificationService->sendTelegram($message, $id);
         } else if ($type == 'vk') {
             $this->notificationService->sendVk($message);
         } else if ($type == 'all') {

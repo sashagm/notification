@@ -9,18 +9,20 @@ use Illuminate\Support\Facades\Mail;
 
 class NotificationService
 {
-    public function sendEmail($message)
+    public function sendEmail($message, $id = null)
     {
-        Mail::raw($message, function ($message) {
-            $message->to(config('nf.email'))
+        $to = $id ? $id : config('nf.email');
+
+        Mail::raw($message, function ($message) use ($to) {
+            $message->to($to)
                     ->subject('New Notification');
         });
     }
 
-    public function sendTelegram($message)
+    public function sendTelegram($message, $chatId = null)
     {
         $telegramApiKey = config('nf.telegramApiKey');
-        $chatId = config('nf.chatId');
+        $chatId = $chatId ? $chatId : config('nf.chatId');
 
         $client = new Client([
             'base_uri' => 'https://api.telegram.org/',

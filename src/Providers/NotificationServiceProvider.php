@@ -3,7 +3,7 @@
 namespace Sashagm\Notification\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Sashagm\Themes\Console\Commands\CreateCommand;
+use Sashagm\Notification\Console\Commands\CreateCommand;
 use Sashagm\Notification\Console\Commands\TestNotificationCommand;
 
 class NotificationServiceProvider extends ServiceProvider
