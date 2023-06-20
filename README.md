@@ -44,6 +44,8 @@ NotificationService также предоставляет возможность
 NF_EMAIL= 
 TELEGRAM_API_KEY = 
 TELEGRAM_CHAT_ID = 
+NF_URL=/custom/notifications
+NF_ROUTE_NAME=custom-nf
 ```
 
 2. Например, чтобы отправить уведомление на почту, отправьте POST запрос на `route('nf')` со следующими параметрами:
