@@ -13,6 +13,10 @@ class NotificationService
     {
         $to = $id ? $id : config('nf.email');
 
+        if (!$to) {
+            throw new \Exception('Email adress is not set');
+        }
+
         Mail::raw($message, function ($message) use ($to) {
             $message->to($to)
                     ->subject('New Notification');
@@ -23,6 +27,10 @@ class NotificationService
     {
         $telegramApiKey = config('nf.telegramApiKey');
         $chatId = $chatId ? $chatId : config('nf.chatId');
+
+        if (!$chatId) {
+            throw new \Exception('Telegram chatId is not set');
+        }
 
         $client = new Client([
             'base_uri' => 'https://api.telegram.org/',
@@ -42,9 +50,11 @@ class NotificationService
     }
 
 
-    public function sendVk($message)
+    public function sendVk($message, $vkApiKey = null)
     {
-        
+        if (!$vkApiKey) {
+            throw new \Exception('VK API key is not set');
+        }
         
         
     }
