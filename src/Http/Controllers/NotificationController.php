@@ -3,6 +3,7 @@
 namespace Sashagm\Notification\Http\Controllers;
 
 use Illuminate\Http\Request;
+use InvalidArgumentException;
 use Sashagm\Notification\Services\NotificationService;
 
 class NotificationController extends Controller
@@ -20,6 +21,10 @@ class NotificationController extends Controller
         $message = $request->input('message');
         $id = $request->input('id');
 
+        if (!in_array($type, ['email', 'telegram', 'vk', 'all'])) {
+            throw new InvalidArgumentException('Invalid notification type');
+        }
+
         if ($type == 'email') {
             $this->notificationService->sendEmail($message, $id);
         } else if ($type == 'telegram') {
@@ -28,12 +33,10 @@ class NotificationController extends Controller
             $this->notificationService->sendVk($message);
         } else if ($type == 'all') {
             $this->notificationService->sendAll($message);
-        } 
-        
-        else {
-            return response()->json(['error' => 'Invalid notification type'], 400);
         }
 
-        return response()->json(['success' => true]);
+        return response()
+                ->json(['success' => true]);
     }
 }
+
