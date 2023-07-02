@@ -21,17 +21,23 @@ class NotificationServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
-        $this->loadRoutesFrom(__DIR__.'/../routes/notification.php');
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/nf.php', 'nf'
-        );
+
+        $this->loadRoutesFrom(__DIR__ . '/../routes/notification.php');
+        // $this->mergeConfigFrom(
+        //    __DIR__.'/../config/nf.php', 'nf'
+        //);
+
+        $this->app['router']->aliasMiddleware('check.access', \Sashagm\Notification\Http\Middleware\CheckAccess::class);
+
+        $this->publishes([
+            __DIR__ . '/../config/nf.php' => config_path('nf.php'),
+        ]);
 
         if ($this->app->runningInConsole()) {
             $this->commands([
                 CreateCommand::class,
                 TestNotificationCommand::class,
- 
+
             ]);
         }
     }
