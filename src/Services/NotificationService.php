@@ -9,12 +9,19 @@ use Illuminate\Support\Facades\Mail;
 
 class NotificationService
 {
+    protected $httpClient;
+
+    public function __construct()
+    {
+        $this->httpClient = $this->createHttpClient();
+    }
+
     public function sendEmail($message, $id = null)
     {
         $to = $id ? $id : config('nf.email');
 
         if (!$to) {
-            throw new \Exception('Email adress is not set');
+            throw new \Exception('Email address is not set');
         }
 
         Mail::raw($message, function ($message) use ($to) {
@@ -32,12 +39,7 @@ class NotificationService
             throw new \Exception('Telegram chatId is not set');
         }
 
-        $client = new Client([
-            'base_uri' => 'https://api.telegram.org/',
-            'timeout'  => 2.0,
-        ]);
-
-        $response = $client->request('POST', "https://api.telegram.org/bot$telegramApiKey/sendMessage", [
+        $response = $this->httpClient->request('POST', "https://api.telegram.org/bot$telegramApiKey/sendMessage", [
             'form_params' => [
                 'chat_id' => $chatId,
                 'text' => $message,
@@ -49,26 +51,29 @@ class NotificationService
         }
     }
 
-
     public function sendVk($message, $vkApiKey = null)
     {
+        $vkApiKey = $vkApiKey ? $vkApiKey : config('nf.vkApiKey');
+
         if (!$vkApiKey) {
             throw new \Exception('VK API key is not set');
         }
-        
-        
-    }
-    
 
+        // Send VK message
+    }
 
     public function sendAll($message)
     {
-
         $this->sendEmail($message);
         $this->sendTelegram($message);
-
+       // $this->sendVk($message);
     }
 
-
-
+    protected function createHttpClient()
+    {
+        return new Client([
+            'base_uri' => 'https://api.telegram.org/',
+            'timeout'  => 2.0,
+        ]);
+    }
 }
