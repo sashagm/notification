@@ -8,6 +8,7 @@ use Sashagm\Notification\Http\Controllers\NotificationController;
 
 Route::group(['middleware' => ['web', 'check.access']], function () {
 
-    Route::post(config('nf.url'), [NotificationController::class, 'send'])->name(config('nf.routeName'));
+    Route::post(config('nf.routes.url'), [NotificationController::class, 'send'])
+            ->name(config('nf.routes.routeName'));
     
 });

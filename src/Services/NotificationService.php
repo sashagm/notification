@@ -5,6 +5,7 @@ namespace Sashagm\Notification\Services;
 use Exception;
 use GuzzleHttp\Client;
 use VK\Client\VKApiClient;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class NotificationService
@@ -26,8 +27,10 @@ class NotificationService
 
         Mail::raw($message, function ($message) use ($to) {
             $message->to($to)
-                    ->subject('New Notification');
+                ->subject('New Notification');
         });
+
+        $this->isLogger("Email");
     }
 
     public function sendTelegram($message, $chatId = null)
@@ -49,6 +52,8 @@ class NotificationService
         if ($response->getStatusCode() != 200) {
             throw new \Exception('Failed to send Telegram message');
         }
+
+        $this->isLogger("Telegram");
     }
 
     public function sendVk($message, $vkApiKey = null)
@@ -60,13 +65,16 @@ class NotificationService
         }
 
         // Send VK message
+
+        $this->isLogger("Vk");
     }
 
     public function sendAll($message)
     {
         $this->sendEmail($message);
         $this->sendTelegram($message);
-       // $this->sendVk($message);
+        // $this->sendVk($message);
+        $this->isLogger("All");
     }
 
     protected function createHttpClient()
@@ -75,5 +83,16 @@ class NotificationService
             'base_uri' => 'https://api.telegram.org/',
             'timeout'  => 2.0,
         ]);
+    }
+
+    private function isLogger($channel)
+    {
+        $loggerConfig = config('nf.logger');
+
+        if ($loggerConfig) {
+            // Записываем лог, что уведомления отправлены
+            // Например, можно использовать Laravel Log facade:
+            Log::info("All notifications have been sent to the specified channels: $channel!");
+        }
     }
 }

@@ -3,7 +3,6 @@
 namespace Sashagm\Notification\Console\Commands;
 
 use Illuminate\Console\Command;
-
 use Sashagm\Notification\Services\NotificationService;
 
 class CreateCommand extends Command

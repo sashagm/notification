@@ -13,14 +13,16 @@ class CheckAccess
             return $next($request);
         }
 
-        $user = Auth::user();
+        $colum = config('nf.check.save_colum');
+        $val = config('nf.check.save_value');
+        $guard = config('nf.check.guard');
+
+        $user = Auth::guard($guard)->user();
+
 
         if (!$user) {
             abort(403, 'У вас нет прав на отправку уведомлений');
         }
-
-        $colum = config('nf.check.save_colum');
-        $val = config('nf.check.save_value');
 
         if (!in_array($user->$colum, $val)) {
             abort(403, 'У вас нет прав на отправку уведомлений');

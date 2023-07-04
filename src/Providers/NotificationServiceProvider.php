@@ -3,11 +3,14 @@
 namespace Sashagm\Notification\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Sashagm\Notification\Traits\BootTrait;
 use Sashagm\Notification\Console\Commands\CreateCommand;
+use Sashagm\Notification\Console\Commands\InstallCommand;
 use Sashagm\Notification\Console\Commands\TestNotificationCommand;
 
 class NotificationServiceProvider extends ServiceProvider
 {
+    use BootTrait;
     /**
      * Register services.
      */
@@ -23,11 +26,12 @@ class NotificationServiceProvider extends ServiceProvider
     {
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/notification.php');
+
         // $this->mergeConfigFrom(
         //    __DIR__.'/../config/nf.php', 'nf'
         //);
 
-        $this->app['router']->aliasMiddleware('check.access', \Sashagm\Notification\Http\Middleware\CheckAccess::class);
+        $this->bootSys();
 
         $this->publishes([
             __DIR__ . '/../config/nf.php' => config_path('nf.php'),
@@ -37,6 +41,7 @@ class NotificationServiceProvider extends ServiceProvider
             $this->commands([
                 CreateCommand::class,
                 TestNotificationCommand::class,
+                InstallCommand::class,
 
             ]);
         }

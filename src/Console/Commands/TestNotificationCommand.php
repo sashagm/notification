@@ -5,7 +5,6 @@ namespace Sashagm\Notification\Console\Commands;
 use Illuminate\Console\Command;
 use Sashagm\Notification\Services\NotificationService;
 
-
 class TestNotificationCommand extends Command
 {
     protected $signature = 'notification:test {type}';
