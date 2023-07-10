@@ -30,7 +30,7 @@ class NotificationService
                 ->subject('New Notification');
         });
 
-        $this->isLogger("Email");
+        $this->logNotification("Email");
     }
 
     public function sendTelegram($message, $chatId = null)
@@ -53,7 +53,7 @@ class NotificationService
             throw new \Exception('Failed to send Telegram message');
         }
 
-        $this->isLogger("Telegram");
+        $this->logNotification("Telegram");
     }
 
     public function sendVk($message, $vkApiKey = null)
@@ -66,7 +66,7 @@ class NotificationService
 
         // Send VK message
 
-        $this->isLogger("Vk");
+        $this->logNotification("Vk");
     }
 
     public function sendAll($message)
@@ -74,7 +74,7 @@ class NotificationService
         $this->sendEmail($message);
         $this->sendTelegram($message);
         // $this->sendVk($message);
-        $this->isLogger("All");
+        $this->logNotification("All");
     }
 
     protected function createHttpClient()
@@ -85,13 +85,13 @@ class NotificationService
         ]);
     }
 
-    private function isLogger($channel)
+    private function logNotification($channel)
     {
         $loggerConfig = config('nf.logger');
 
         if ($loggerConfig) {
-            // Записываем лог, что уведомления отправлены
-            // Например, можно использовать Laravel Log facade:
+            // Write a log that notifications have been sent
+            // For example, you can use the Laravel Log facade:
             Log::info("All notifications have been sent to the specified channels: $channel!");
         }
     }
