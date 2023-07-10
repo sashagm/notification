@@ -25,25 +25,39 @@ class NotificationServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/notification.php');
-
-        // $this->mergeConfigFrom(
-        //    __DIR__.'/../config/nf.php', 'nf'
-        //);
+        $this->registerRouter();
 
         $this->bootSys();
 
-        $this->publishes([
-            __DIR__ . '/../config/nf.php' => config_path('nf.php'),
-        ]);
+        $this->publishFiles();
 
+        $this->registerCommands();
+    }
+
+    protected function registerRouter()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../routes/notification.php');
+    }
+
+    protected function registerCommands()
+    {
         if ($this->app->runningInConsole()) {
             $this->commands([
                 CreateCommand::class,
                 TestNotificationCommand::class,
                 InstallCommand::class,
-
             ]);
         }
+    }
+
+    protected function publishFiles()
+    {
+        // $this->mergeConfigFrom(
+        //    __DIR__.'/../config/nf.php', 'nf'
+        //);
+
+        $this->publishes([
+            __DIR__ . '/../config/nf.php' => config_path('nf.php'),
+        ]);
     }
 }
