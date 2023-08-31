@@ -47,6 +47,12 @@ class NotificationServiceProvider extends ServiceProvider
                 TestNotificationCommand::class,
                 InstallCommand::class,
             ]);
+        } else {
+            $this->commands([
+                CreateCommand::class,
+                TestNotificationCommand::class,
+                InstallCommand::class,
+            ]);
         }
     }
 

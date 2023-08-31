@@ -7,9 +7,12 @@ use GuzzleHttp\Client;
 use VK\Client\VKApiClient;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Sashagm\Notification\Traits\BuildsLoggers;
 
 class NotificationService
 {
+    use BuildsLoggers;
+
     protected $httpClient;
 
     public function __construct()
@@ -92,7 +95,9 @@ class NotificationService
         if ($loggerConfig) {
             // Write a log that notifications have been sent
             // For example, you can use the Laravel Log facade:
-            Log::info("All notifications have been sent to the specified channels: $channel!");
+            $this->logger('info', "All notifications have been sent to the specified channels: $channel!");
+
+        
         }
     }
 }

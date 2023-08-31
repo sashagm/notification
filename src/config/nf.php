@@ -10,6 +10,8 @@ return [
     'vkToken'           => env('VK_TOKEN'),
     'vkUserId'          => env('VK_USER_ID'),
     'logger'            => true, // Разрешить логирование
+    'logger_method'     => true,              // Использовать дефолтный вариант логирования(false - Кастомный логер)
+    'logger_path'       => "logs/custom.log",  // Путь для кастомного логера
 
 
     'check'             => [
