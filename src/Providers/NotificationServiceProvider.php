@@ -24,12 +24,11 @@ class NotificationServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->publishFiles();
 
         $this->registerRouter();
 
         $this->bootSys();
-
-        $this->publishFiles();
 
         $this->registerCommands();
     }
