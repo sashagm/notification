@@ -13,7 +13,7 @@
     "require": {
         "php": "^8.0",
         "laravel/framework": "^10.0",
-        "laravel-notification-channels/telegram": "^4.0",
+        "laravel-notification-channels/telegram": "^5.0",
         "irazasyed/telegram-bot-sdk": "^3.13",
         "twilio/sdk": "^7.5"
     },
