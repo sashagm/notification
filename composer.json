@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "sashagm/notification",
     "description": "NotificationService - это компонент фреймворка Laravel, который позволяет уведомлять пользователей о различных событиях в приложении. Он предоставляет возможность отправки уведомлений на электронную почту или в Telegram-чаты.",
@@ -39,3 +40,46 @@
         ]
     }
 }
+=======
+{
+    "name": "sashagm/notification",
+    "description": "NotificationService - это компонент фреймворка Laravel, который позволяет уведомлять пользователей о различных событиях в приложении. Он предоставляет возможность отправки уведомлений на электронную почту или в Telegram-чаты.",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sashagm",
+            "email": "example@gmail.com",
+            "homepage": "https://github.com/sashagm"
+        }    
+    ],
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^10.0",
+        "laravel-notification-channels/telegram": "^5.0",
+        "irazasyed/telegram-bot-sdk": "^3.13",
+        "twilio/sdk": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sashagm\\Notification\\": "src",
+            "Sashagm\\Notification\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sashagm\\Notification\\Providers\\NotificationServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ]
+    }
+}
+>>>>>>> e1a7cb582fc4f32dc3abd9531adcb83dca1ec49b
