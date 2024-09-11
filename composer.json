@@ -8,11 +8,11 @@
             "name": "sashagm",
             "email": "example@gmail.com",
             "homepage": "https://github.com/sashagm"
-        }    
+        }
     ],
     "require": {
         "php": "^8.0",
-        "laravel/framework": "^10.0",
+        "laravel/framework": "^10.0 || ^11.0",
         "laravel-notification-channels/telegram": "^4.0",
         "irazasyed/telegram-bot-sdk": "^3.13",
         "twilio/sdk": "^7.5"
