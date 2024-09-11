@@ -12,7 +12,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "laravel/framework": "^10 || ^11",
         "laravel-notification-channels/telegram": "^4.0 || ^5",
         "irazasyed/telegram-bot-sdk": "^3.13",
         "twilio/sdk": "^7.5"
